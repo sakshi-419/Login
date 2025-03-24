@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        .container {
+            max-width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            border: 2px solid #000;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .dark-mode {
+            background: #222;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>DOM Manipulation</h2>
+
+    <div class="container" id="customBox">
+        <p id="textContent">Exam Preparation</p>
+    </div>
+
+    <h3>Div Background Color</h3>
+    <input type="color" id="divBgColorPicker">
+
+    <h3>Div Alignment</h3>
+    <button onclick="changeDivAlignment('left')">Left</button>
+    <button onclick="changeDivAlignment('center')">Center</button>
+    <button onclick="changeDivAlignment('right')">Right</button>
+
+    <h3>Text Color</h3>
+    <input type="color" id="textColorPickerBox">
+
+    <h3>Text Alignment</h3>
+    <button onclick="changeTextAlignment('left')">Left</button>
+    <button onclick="changeTextAlignment('center')">Center</button>
+    <button onclick="changeTextAlignment('right')">Right</button>
+
+    <h3>Text Style</h3>
+    <button onclick="toggleBold()">Bold</button>
+    <button onclick="toggleItalic()">Italic</button>
+    <button onclick="toggleUnderline()">Underline</button>
+
+    <h3>Text Size</h3>
+    <input type="range" id="textSizeSliderBox" value="16" min="10" max="50">
+
+    <h3>Font Family</h3>
+    <select id="fontSelectorBox">
+        <option value="Arial">Arial</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Verdana">Verdana</option>
+    </select>
+
+    <h3>Border Color</h3>
+    <input type="color" id="borderColorPickerBox">
+
+    <h3>Border Radius</h3>
+    <input type="range" id="borderRadiusSliderBox" value="10" min="0" max="50">
+
+    <h3>Border Size</h3>
+    <input type="range" id="borderSizeBox" value="2" min="1" max="10">
+
+    <h3>Box Shadow</h3>
+    <input type="range" id="shadowSliderBox" value="5" min="0" max="50">
+
+    <h3>Dark Mode</h3>
+    <button id="darkModeToggleBox">Toggle Dark Mode</button>
+
+    <script>
+        const textContent = document.getElementById('textContent');
+        const customBox = document.getElementById('customBox');
+
+        // Background Color Change
+        document.getElementById('divBgColorPicker').addEventListener('input', (event) => {
+            customBox.style.backgroundColor = event.target.value;
+        });
+
+        // Div Alignment
+        function changeDivAlignment(alignment) {
+            customBox.style.marginLeft = alignment === 'left' ? '0' : 'auto';
+            customBox.style.marginRight = alignment === 'right' ? '0' : 'auto';
+            if (alignment === 'center') {
+                customBox.style.margin = "20px auto";
+            }
+        }
+
+        // Text Styling
+        function toggleBold() {
+            textContent.style.fontWeight = textContent.style.fontWeight === 'bold' ? 'normal' : 'bold';
+        }
+
+        function toggleItalic() {
+            textContent.style.fontStyle = textContent.style.fontStyle === 'italic' ? 'normal' : 'italic';
+        }
+
+        function toggleUnderline() {
+            textContent.style.textDecoration = textContent.style.textDecoration === 'underline' ? 'none' : 'underline';
+        }
+
+        // Text Color Change
+        document.getElementById('textColorPickerBox').addEventListener('input', (event) => {
+            textContent.style.color = event.target.value;
+        });
+
+        // Text Alignment
+        function changeTextAlignment(alignment) {
+            textContent.style.textAlign = alignment;
+        }
+
+        // Text Size
+        document.getElementById('textSizeSliderBox').addEventListener('input', (event) => {
+            textContent.style.fontSize = event.target.value + 'px';
+        });
+
+        // Font Family
+        document.getElementById('fontSelectorBox').addEventListener('change', (event) => {
+            textContent.style.fontFamily = event.target.value;
+        });
+
+        // Border Color
+        document.getElementById('borderColorPickerBox').addEventListener('input', (event) => {
+            customBox.style.borderColor = event.target.value;
+        });
+
+        // Border Radius
+        document.getElementById('borderRadiusSliderBox').addEventListener('input', (event) => {
+            customBox.style.borderRadius = event.target.value + 'px';
+        });
+
+        // Border Size
+        document.getElementById('borderSizeBox').addEventListener('input', (event) => {
+            customBox.style.borderWidth = event.target.value + 'px';
+        });
+
+        // Box Shadow
+        document.getElementById('shadowSliderBox').addEventListener('input', (event) => {
+            customBox.style.boxShadow = `0px 0px ${event.target.value}px rgba(0,0,0,0.5)`;
+        });
+
+        // Dark Mode Toggle
+        document.getElementById('darkModeToggleBox').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+
+</body>
+</html>

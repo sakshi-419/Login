@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        #colorBox {
+            width: 800px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;      
+            border: 2px solid black;
+        }
+            
+    </style>
+</head>
+<body>
+
+    <div id="colorBox">
+        <p id="alignText">sample text</p>
+    </div>
+    
+    <label for="bgColorPicker">Background Color:</label>
+    <input type="color" id="bgColorPicker" onchange="document.getElementById('colorBox').style.backgroundColor=this.value;">
+    
+    <label for="textColorPicker">Text Color:</label>
+    <input type="color" id="textColorPicker" onchange="document.getElementById('colorBox').style.color=this.value;">
+
+    <h3>Align Div</h3>
+    <button onclick="changeAlignment('left')">Left</button>
+    <button onclick="changeAlignment('center')">Center</button>
+    <button onclick="changeAlignment('right')">Right</button>
+
+    
+    <script type="text/javascript">
+        // Function to align the div
+        function changeAlignment(alignment) {
+            let box = document.getElementById('colorBox');
+            if (alignment === 'left') {
+                box.style.margin = '20px auto 20px 0';
+            } else if (alignment === 'center') {
+                box.style.margin = '20px auto';
+            } else if (alignment === 'right') {
+                box.style.margin = '20px 0 20px auto';
+            }
+        }
+
+    </script>
+</body>
+</html>

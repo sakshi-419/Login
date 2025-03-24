@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style  type="text/css">
+        #container{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(246, 103, 103);
+        }
+        input{
+           margin-top: 100px;
+           padding: 5px;
+           margin-left: 10px;
+        }
+     
+    </style>
+</head>
+<body>
+    <div id="container">
+     <input type="text" name="" id="text">
+     <button onclick="changetext()">changetext</button>
+
+    </div>
+    <input type="color" name="" id="changeColor">
+    <button onclick="changeBoxColor()">Change Color</button>
+
+    <script>
+        function changeBoxColor(){
+            let color = document.getElementById("changeColor").value;
+            document.getElementById("container").style.backgroundColor= color;
+        }
+        function changeText(){
+            let text = document.getElementById("text");
+            textInput.style.backgroundColor = "red"; 
+        }
+
+    </script>
+   
+</html>
